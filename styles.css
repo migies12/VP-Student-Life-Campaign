@@ -265,6 +265,12 @@ body {
     color: var(--accent-gold);
     margin-bottom: 20px;
 }
+.hero-subheader {
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    margin-bottom: 20px;
+}
 
 .hero-description {
     font-size: 1.2rem;
