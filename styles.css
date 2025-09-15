@@ -1104,9 +1104,5 @@ body {
   }
 }
 
-@media (max-width: 480px) {
-  .candidate-photo img {
-    max-width: 220px;
-  }
-}
+
 
