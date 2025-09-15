@@ -285,8 +285,8 @@ body {
 }
 
 .candidate-photo {
-    width: 350px;
-    height: 350px;
+    width: 600px;
+    height: 600px;
     border-radius: 50%;
     overflow: hidden;
     border: 5px solid var(--accent-gold);
@@ -302,7 +302,6 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: none;
 }
 
 .photo-placeholder {
@@ -440,7 +439,7 @@ body {
 
 .about-photo {
     width: 100%;
-    height: 400px;
+    height: 900px;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow-medium);
@@ -455,7 +454,45 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: none;
+}
+
+/* Gallery Section for Student Life */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
+}
+.gallery-item {
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    background: var(--pure-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.gallery-item .photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--medium-gray);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.gallery-item .photo-placeholder i {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
 }
 
 /* Student Life Section */
@@ -567,6 +604,7 @@ body {
     box-shadow: var(--shadow-light);
     transition: all 0.3s ease;
     position: relative;
+    overflow: hidden;
 }
 
 .platform-item:hover {
@@ -574,19 +612,34 @@ body {
     box-shadow: var(--shadow-medium);
 }
 
-.platform-number {
-    display: inline-block;
-    width: 60px;
-    height: 60px;
+.platform-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
     background: var(--gradient-sunset);
-    color: var(--pure-white);
-    border-radius: 50%;
-    font-size: 1.5rem;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
+}
+
+.life-card.blue::before {
+    background: var(--gradient-blue);
+}
+
+.life-card.green::before {
+    background: var(--gradient-nature);
+}
+
+.life-card.green_2::before {
+    background: linear-gradient(135deg, #2E8B57 0%, #228B22 100%);
+}
+
+.life-card.blue_2::before {
+    background: linear-gradient(135deg, #0f4c8c 0%, #87CEEB 100%);
+}
+
+.life-card.red::before {
+    background: linear-gradient(135deg, #E53E3E 0%, #FF6B35 100%);
 }
 
 .platform-item h3 {
@@ -623,6 +676,8 @@ body {
     margin-bottom: 30px;
 }
 
+
+
 /* Contact Section */
 .contact {
     padding: 100px 0;
@@ -639,9 +694,7 @@ body {
 }
 
 .contact-content {
-    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
 }
 
 .contact-item {
@@ -653,6 +706,20 @@ body {
     border-radius: 15px;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+}
+.contact-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;   /* ensures same height */
+  gap: 40px;
+}
+
+.contact-item {
+  flex: 1;                /* equal width for all */
+  text-align: center;     /* center text/icons */
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .contact-item:hover {

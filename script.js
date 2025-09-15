@@ -85,28 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Animated counter for stats
-    function animateCounters() {
-        const counters = document.querySelectorAll('.stat-number');
-        const speed = 200; // The lower the slower
-
-        counters.forEach(counter => {
-            const animate = () => {
-                const value = +counter.getAttribute('data-target') || 0;
-                const data = +counter.innerText;
-                const time = value / speed;
-                
-                if (data < value) {
-                    counter.innerText = Math.ceil(data + time);
-                    setTimeout(animate, 1);
-                } else {
-                    counter.innerText = value;
-                }
-            };
-            animate();
-        });
-    }
-
     // Intersection Observer for animations
     const observerOptions = {
         threshold: 0.1,
@@ -234,55 +212,54 @@ document.addEventListener('DOMContentLoaded', function() {
     function setupImageHandling() {
         const candidatePhotoPlaceholder = document.querySelector('.candidate-photo .photo-placeholder');
         const aboutPhotoPlaceholder = document.querySelector('.about-photo .photo-placeholder');
-        
+        const galleryItems = document.querySelectorAll('.gallery-item .photo-placeholder');
+
         if (candidatePhotoPlaceholder) {
             candidatePhotoPlaceholder.addEventListener('click', function() {
-                const input = document.createElement('input');
-                input.type = 'file';
-                input.accept = 'image/*';
-                input.addEventListener('change', function(e) {
-                    const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            const img = document.getElementById('candidate-image');
-                            img.src = e.target.result;
-                            img.style.display = 'block';
-                            candidatePhotoPlaceholder.style.display = 'none';
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                });
-                input.click();
+                handleImageUpload('candidate-image', candidatePhotoPlaceholder);
             });
         }
-        
+
         if (aboutPhotoPlaceholder) {
             aboutPhotoPlaceholder.addEventListener('click', function() {
-                const input = document.createElement('input');
-                input.type = 'file';
-                input.accept = 'image/*';
-                input.addEventListener('change', function(e) {
-                    const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            const img = document.getElementById('about-image');
-                            img.src = e.target.result;
-                            img.style.display = 'block';
-                            aboutPhotoPlaceholder.style.display = 'none';
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                });
-                input.click();
+                handleImageUpload('about-image', aboutPhotoPlaceholder);
             });
+        }
+
+        galleryItems.forEach((placeholder, index) => {
+            placeholder.addEventListener('click', function() {
+                const imgId = `gallery-image-${index + 1}`;
+                handleImageUpload(imgId, placeholder);
+            });
+        });
+
+        function handleImageUpload(imgId, placeholderElement) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = e => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const img = document.getElementById(imgId);
+                        img.src = event.target.result;
+                        img.style.display = 'block';
+                        if (placeholderElement) {
+                            placeholderElement.style.display = 'none';
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
         }
     }
 
     setupImageHandling();
 
     // Typing effect for hero title
+    const heroTitle = document.querySelector('.hero-title');
     function typeWriter(element, text, speed = 100) {
         let i = 0;
         element.innerHTML = '';
