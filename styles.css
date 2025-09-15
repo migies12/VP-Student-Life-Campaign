@@ -350,7 +350,7 @@ body {
 
 /* About Section */
 .about {
-    padding: 100px 0;
+    padding: 25px 0;
     background: var(--light-gray);
 }
 
@@ -439,7 +439,7 @@ body {
 
 .about-photo {
     width: 100%;
-    height: 900px;
+    height: 800px;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow-medium);
@@ -622,23 +622,23 @@ body {
     background: var(--gradient-sunset);
 }
 
-.life-card.blue::before {
+.platform-item.blue::before {
     background: var(--gradient-blue);
 }
 
-.life-card.green::before {
+.platform-item.green::before {
     background: var(--gradient-nature);
 }
 
-.life-card.green_2::before {
+.platform-item.green_2::before {
     background: linear-gradient(135deg, #2E8B57 0%, #228B22 100%);
 }
 
-.life-card.blue_2::before {
+.platform-item.blue_2::before {
     background: linear-gradient(135deg, #0f4c8c 0%, #87CEEB 100%);
 }
 
-.life-card.red::before {
+.platform-item::before {
     background: linear-gradient(135deg, #E53E3E 0%, #FF6B35 100%);
 }
 
