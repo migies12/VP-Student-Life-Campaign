@@ -913,7 +913,7 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .phone{
-        display:block !important;
+        display:flex !important;
     }
     .desktop{
         display:none !important;
@@ -942,13 +942,16 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        text-align: center;
-        gap: 20px;
+        text-align: center !important;  
+        gap: 40px !important;
+        grid-template-columns: 1fr !important;
     }
 
     .hero-image {
         order: 2; /* default order for flex children */
-        margin-top: 20px;
+        justify-content: center !important; /* horizontal center */
+        align-items: center !important;     /* vertical center, if needed */
+        margin: 0 auto !important;          /* extra safeguard */
     }
 
     .hero-text {
