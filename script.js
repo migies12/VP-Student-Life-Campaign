@@ -380,3 +380,33 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('VP Student Life Campaign Website loaded successfully! 🚀');
     console.log('To customize this website, edit the placeholder text in the HTML file.');
 });
+
+// Article audio summary functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const audioToggle = document.querySelector('.audio-toggle');
+    
+    if (audioToggle) {
+        let audio = null;
+        let isPlaying = false;
+        
+        audioToggle.addEventListener('click', function() {
+            if (!isPlaying) {
+                // Start audio summary (you would replace with actual audio)
+                this.innerHTML = '<i class="fas fa-pause"></i> Pause summary';
+                isPlaying = true;
+                
+                // Here you would integrate with a text-to-speech API
+                // or use a pre-recorded audio file
+                alert("Audio summary would play here. In a real implementation, you would use a text-to-speech service or pre-recorded audio.");
+            } else {
+                // Pause audio
+                this.innerHTML = '<i class="fas fa-headphones"></i> Listen to summary';
+                isPlaying = false;
+                
+                if (audio) {
+                    audio.pause();
+                }
+            }
+        });
+    }
+});
