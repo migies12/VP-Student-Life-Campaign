@@ -137,7 +137,7 @@ body {
 
 .nav-logo {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
 }
 
@@ -1156,3 +1156,40 @@ body {
 .read-more:hover {
     background-color: #2980b9; /* Darker shade on hover */
 }
+
+.platform-item ul {
+    list-style-type: disc;    /* bullets */
+    padding-left: 20px;       /* indent for bullets */
+    margin-top: 10px;
+    text-align: left;         /* force left alignment */
+}
+
+
+.platform-list {
+  list-style-type: disc;
+  padding-left: 1.5rem; /* consistent indent */
+  margin-top: 0.5rem;
+}
+
+.platform-list li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* spacing between logo and text */
+}
+
+.logo-img {
+  height: 40px; /* adjust size to fit your navbar */
+  width: auto;
+}
+
+.logo-text-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
